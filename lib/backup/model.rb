@@ -168,12 +168,6 @@ module Backup
     end
 
     ##
-    # Adds an Notifier. Multiple Notifiers may be added to the model.
-    def notify_by(name, &block)
-      @notifiers << get_class_from_scope(Notifier, name).new(self, &block)
-    end
-
-    ##
     # Adds an Encryptor. Only one Encryptor may be added to the model.
     # This will be used to encrypt the final backup package.
     def encrypt_with(name, &block)

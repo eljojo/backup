@@ -280,28 +280,6 @@ describe 'Backup::Model' do
       end
     end
 
-    describe '#notify_by' do
-      it 'should add notifiers' do
-        using_fake('Notifier', Fake::OneArg) do
-          model.notify_by('Base') {|a| a.block_arg = :foo }
-          model.notify_by('Base') {|a| a.block_arg = :bar }
-          model.notifiers.count.should be(2)
-          n1, n2 = model.notifiers
-          n1.arg1.should be(model)
-          n1.block_arg.should == :foo
-          n2.arg1.should be(model)
-          n2.block_arg.should == :bar
-        end
-      end
-
-      it 'should accept a nested class name' do
-        using_fake('Notifier', Fake) do
-          model.notify_by('OneArg::Base')
-          model.notifiers.first.should be_an_instance_of Fake::OneArg::Base
-        end
-      end
-    end
-
     describe '#encrypt_with' do
       it 'should add an encryptor' do
         using_fake('Encryptor', Fake::NoArg) do
