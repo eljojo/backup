@@ -20,6 +20,7 @@ group :production do
   gem 'open4'
   gem 'fog', '= 1.13.0' # see https://github.com/fog/fog/pull/1905
   gem 'json'
+  gem 'builder', '~> 3.1.0'
 end
 
 gem 'rspec'
